@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using 
 
 namespace VirtualUsedCarsShowroom.Extensions
 {
@@ -14,7 +13,7 @@ namespace VirtualUsedCarsShowroom.Extensions
         public static IServiceCollection AddApplicationDbContext(this IServiceCollection services,IConfiguration config)
         {
             var connectionString = config.GetConnectionString("DefaultConnection");
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<Data.CarsShowroomDbContext>(options =>
                 options.UseSqlServer(connectionString));
 
             services.AddDatabaseDeveloperPageExceptionFilter();
@@ -26,7 +25,7 @@ namespace VirtualUsedCarsShowroom.Extensions
         {
             services.AddDefaultIdentity<IdentityUser>(options => options
                     .SignIn.RequireConfirmedAccount = true)
-                    .AddEntityFrameworkStores<ApplicationDbContext>();
+                    .AddEntityFrameworkStores<Data.CarsShowroomDbContext>();
 
             return services;
         }
