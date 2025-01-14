@@ -53,6 +53,7 @@ namespace CarsShowroom.Infrastructure.Data.Models
         public string Features { get; set; } = string.Empty;
 
         [Required]
+        [Column(TypeName ="decimal(18,2)")]
         [Comment("Car price")]
         public decimal Price { get; set; }
 
@@ -74,12 +75,12 @@ namespace CarsShowroom.Infrastructure.Data.Models
         [ForeignKey(nameof(EngineId))]
         public Engine Engine { get; set; } = null!;
 
-        [Required]
-        [Comment("Application user identifier")]
-        public string CustomerId { get; set; } = string.Empty;
+        //[Required]
+        //[Comment("Application user identifier")]
+        //public string CustomerId { get; set; } = string.Empty;
 
-        [ForeignKey(nameof(CustomerId))]
-        public IdentityUser Customer { get; set; } = null!;
+        //[ForeignKey(nameof(CustomerId))]
+        //public IdentityUser Customer { get; set; } = null!;
         public IEnumerable<Appointment> Appointments { get; set; }
         public IEnumerable<TestDrive> TestDrives { get; set; }
         public IEnumerable<Sale> Sales { get; set; }

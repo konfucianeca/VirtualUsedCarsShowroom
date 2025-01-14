@@ -34,9 +34,9 @@ namespace CarsShowroom.Infrastructure.Data.Models
         public int AppointmentId { get; set; }
         public Appointment Appointment { get; set; } = null!;
 
-        [ForeignKey(nameof(Vehicle))]
-        [Comment("Vehicle identifier")]
-        public int VehicleId { get; set; }
-        public Vehicle Vehicle { get; set; } = null!;
+        //[ForeignKey(nameof(Vehicle))]
+        //[Comment("Vehicle identifier")]
+        //public int VehicleId { get; set; }
+        //public Vehicle Vehicle { get; set; } = null!;
     }
 }

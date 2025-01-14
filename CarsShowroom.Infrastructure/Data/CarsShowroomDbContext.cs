@@ -18,5 +18,28 @@ namespace VirtualUsedCarsShowroom.Data
         public DbSet<Sale> Sales { get; set; }
         public DbSet<TestDrive> TestDrives { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<TestDrive>()
+                .HasOne(c=>c.Customer)
+                .WithMany(t=>t.TestDrives)
+                .HasForeignKey(t=>t.CustomerId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<TestDrive>()
+                .HasOne(a=>a.Appointment)
+                .WithMany()
+                .HasForeignKey(a=>a.AppointmentId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            //builder.Entity<TestDrive>()
+            //    .HasOne(v => v.Vehicle)
+            //    .WithMany()
+            //    .HasForeignKey(v => v.VehicleId)
+            //    .OnDelete(DeleteBehavior.Restrict);
+
+            base.OnModelCreating(builder);
+        }
     }
 }
