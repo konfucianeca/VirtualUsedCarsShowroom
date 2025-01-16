@@ -1,4 +1,5 @@
 ﻿using CarsShowroom.Infrastructure.Data.Models;
+using CarsShowroom.Infrastructure.Data.SeedDb;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,33 +12,40 @@ namespace VirtualUsedCarsShowroom.Data
         {
         }
 
-        public DbSet<Vehicle> Vehicles { get; set; }
-        public DbSet<Engine> Engines { get; set; }
-        public DbSet<Customer> Customers { get; set; }
-        public DbSet<Manufacturer> Manufacturers { get; set; }
-        public DbSet<Sale> Sales { get; set; }
-        public DbSet<TestDrive> TestDrives { get; set; }
-        public DbSet<Appointment> Appointments { get; set; }
+        public DbSet<Vehicle> Vehicles { get; set; } = null!;
+        public DbSet<Engine> Engines { get; set; } = null!;
+        public DbSet<Customer> Customers { get; set; } = null!;
+        public DbSet<Manufacturer> Manufacturers { get; set; } = null!;
+        public DbSet<Sale> Sales { get; set; } = null!;
+        public DbSet<TestDrive> TestDrives { get; set; } = null!;
+        public DbSet<Appointment> Appointments { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<TestDrive>()
-                .HasOne(c=>c.Customer)
-                .WithMany(t=>t.TestDrives)
-                .HasForeignKey(t=>t.CustomerId)
+                .HasOne(c => c.Customer)
+                .WithMany(t => t.TestDrives)
+                .HasForeignKey(t => t.CustomerId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder.Entity<TestDrive>()
-                .HasOne(a=>a.Appointment)
+                .HasOne(a => a.Appointment)
                 .WithMany()
-                .HasForeignKey(a=>a.AppointmentId)
+                .HasForeignKey(a => a.AppointmentId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            //builder.Entity<TestDrive>()
-            //    .HasOne(v => v.Vehicle)
-            //    .WithMany()
-            //    .HasForeignKey(v => v.VehicleId)
-            //    .OnDelete(DeleteBehavior.Restrict);
+            builder.Entity<Vehicle>()
+                .HasOne(c=>c.Customer)
+                .WithMany(v=>v.Vehicles)
+                .HasForeignKey(v => v.CustomerId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+
+            builder.ApplyConfiguration(new UserConfiguration());
+            builder.ApplyConfiguration(new CustomerConfiguration());
+            builder.ApplyConfiguration(new ManufacturerConfiguration());
+            builder.ApplyConfiguration(new EngineConfiguration());
+            builder.ApplyConfiguration(new VehicleConfiguration());
 
             base.OnModelCreating(builder);
         }

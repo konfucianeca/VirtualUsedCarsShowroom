@@ -29,7 +29,7 @@ namespace CarsShowroom.Infrastructure.Data.Models
 
         [Required]
         [Comment("Vehicle production year")]
-        public DateTime YearOfProduction { get; set; }
+        public string YearOfProduction { get; set; }
 
         [Required]
         [MaxLength(RegionNameMaxLenght)]
@@ -46,14 +46,14 @@ namespace CarsShowroom.Infrastructure.Data.Models
         public string Color { get; set; } = string.Empty;
 
         [Comment("Total distance driven by car up to now")]
-        public byte Mileage { get; set; }
+        public int Mileage { get; set; }
 
         [MaxLength(VehicleFeaturesMaxLenght)]
         [Comment("Vehicle additional equipment")]
         public string Features { get; set; } = string.Empty;
 
         [Required]
-        [Column(TypeName ="decimal(18,2)")]
+        [Column(TypeName = "decimal(18,2)")]
         [Comment("Car price")]
         public decimal Price { get; set; }
 
@@ -75,12 +75,12 @@ namespace CarsShowroom.Infrastructure.Data.Models
         [ForeignKey(nameof(EngineId))]
         public Engine Engine { get; set; } = null!;
 
-        //[Required]
-        //[Comment("Application user identifier")]
-        //public string CustomerId { get; set; } = string.Empty;
+        [Required]
+        [Comment("Customer identifier")]
+        public int CustomerId { get; set; }
 
-        //[ForeignKey(nameof(CustomerId))]
-        //public IdentityUser Customer { get; set; } = null!;
+        [ForeignKey(nameof(CustomerId))]
+        public Customer Customer { get; set; } = null!;
         public IEnumerable<Appointment> Appointments { get; set; }
         public IEnumerable<TestDrive> TestDrives { get; set; }
         public IEnumerable<Sale> Sales { get; set; }

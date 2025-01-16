@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VirtualUsedCarsShowroom.Data;
 
@@ -11,9 +12,10 @@ using VirtualUsedCarsShowroom.Data;
 namespace CarsShowroom.Infrastructure.Migrations
 {
     [DbContext(typeof(CarsShowroomDbContext))]
-    partial class CarsShowroomDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250116055750_SeedSomeData")]
+    partial class SeedSomeData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -276,8 +278,8 @@ namespace CarsShowroom.Infrastructure.Migrations
 
                     b.Property<string>("Color")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)")
                         .HasComment("Vehicle color");
 
                     b.Property<int?>("Condition")
@@ -317,8 +319,8 @@ namespace CarsShowroom.Infrastructure.Migrations
 
                     b.Property<string>("Model")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
                         .HasComment("Vehicle model");
 
                     b.Property<decimal>("Price")
@@ -327,13 +329,12 @@ namespace CarsShowroom.Infrastructure.Migrations
 
                     b.Property<string>("Region")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
                         .HasComment("Settlement where vehicle is");
 
-                    b.Property<string>("YearOfProduction")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                    b.Property<DateTime>("YearOfProduction")
+                        .HasColumnType("datetime2")
                         .HasComment("Vehicle production year");
 
                     b.HasKey("Id");
@@ -347,59 +348,6 @@ namespace CarsShowroom.Infrastructure.Migrations
                     b.ToTable("Vehicles");
 
                     b.HasComment("Vehicle to sale");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Color = "Black",
-                            Condition = 1,
-                            CustomerId = 1,
-                            EngineId = 1,
-                            Features = "4x4, ABS, ESP, Airbag, Халогенни фарове, ASR/Тракшън контрол, Парктроник, Аларма, Центр. заключване, Старт-Стоп система, Безключово палене",
-                            Gearbox = 3,
-                            ImageUrl = "https://automoto.bg/listings/media/listing//1709991365_nis5vfph.jpg",
-                            ManufacturerId = 1,
-                            Mileage = 178000,
-                            Model = "X5 3.5i Xdrive",
-                            Price = 41500.00m,
-                            Region = "Plovdiv",
-                            YearOfProduction = "2016"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Color = "Grey metalic",
-                            Condition = 1,
-                            CustomerId = 1,
-                            EngineId = 2,
-                            Features = "4x4, ABS, ESP, Airbag, Ксенонови фарове, Халогенни фарове, ASR/Тракшън контрол, Парктроник, Аларма, Имобилайзер, Центр. заключване, Застраховка, Старт-Стоп система, Безключово палене",
-                            Gearbox = 2,
-                            ImageUrl = "https://automoto.bg/listings/media/listing//1720295931_img-209442bc4babdf576e0cf1740ae33342-v.jpg",
-                            ManufacturerId = 2,
-                            Mileage = 174000,
-                            Model = "Santa Fe 2.2CRDI - 4WD",
-                            Price = 34000.00m,
-                            Region = "Lovech",
-                            YearOfProduction = "2014"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Color = "Red",
-                            Condition = 2,
-                            CustomerId = 1,
-                            EngineId = 3,
-                            Features = "  4x4, ABS, ESP, Airbag, Ксенонови фарове, Халогенни фарове, ASR/Тракшън контрол, Парктроник, Аларма, Имобилайзер, Центр. заключване, Застраховка",
-                            Gearbox = 1,
-                            ImageUrl = "https://automoto.bg/listings/media/listing//1725859766_uml1.jpg",
-                            ManufacturerId = 3,
-                            Mileage = 209000,
-                            Model = "Honda CR-V 2.2",
-                            Price = 19000.00m,
-                            Region = "Smolyan",
-                            YearOfProduction = "2011"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -523,15 +471,15 @@ namespace CarsShowroom.Infrastructure.Migrations
                         {
                             Id = "302ded00ee6f4fea7f65fd9f66001b7f62f7673a02459f6930ba396bc26412de",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "999f28ae-e3d7-496b-8f58-7cadef280bc2",
+                            ConcurrencyStamp = "317342a3-ac1d-459f-98c0-1616794040fc",
                             Email = "guest@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "guest@mail.com",
                             NormalizedUserName = "guest@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKqtLe+8GrmqrjdUCXugnBNcjLdlYPKiTlkidzOKyDh9EUNiAT70fN5q15C5EZUQvQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEG8BC2nLPy4prlUFYMvjW8mHfqWXmIFroyxm4Nf9S/1MMSPW+94M+cBS9iCzHm/cPQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "934fba33-6412-4a1f-9809-3f46017456be",
+                            SecurityStamp = "5d753f4e-f986-466d-9cce-56f571b9c590",
                             TwoFactorEnabled = false,
                             UserName = "guest@mail.com"
                         });

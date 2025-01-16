@@ -9,11 +9,11 @@ namespace CarsShowroom.Infrastructure.Data.Constants
     public static class DataConstants
     {
         // Vehicle
-        public const int VehicleModelMaxLenght = 20;
+        public const int VehicleModelMaxLenght = 50;
         public const int VehicleModelMinLenght = 3;
-        public const int RegionNameMaxLenght = 20;
+        public const int RegionNameMaxLenght = 50;
         public const int RegionNameMinLenght = 3;
-        public const int ColorNameMaxLenght = 10;
+        public const int ColorNameMaxLenght = 20;
         public const int ColorNameMinLenght = 3;
         public const int VehicleFeaturesMaxLenght = 500;
         public const int VehicleFeaturesMinLenght = 3;

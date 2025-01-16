@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VirtualUsedCarsShowroom.Data;
 
@@ -11,9 +12,10 @@ using VirtualUsedCarsShowroom.Data;
 namespace CarsShowroom.Infrastructure.Migrations
 {
     [DbContext(typeof(CarsShowroomDbContext))]
-    partial class CarsShowroomDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250116061527_VehiclesDataSeeded")]
+    partial class VehiclesDataSeeded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
