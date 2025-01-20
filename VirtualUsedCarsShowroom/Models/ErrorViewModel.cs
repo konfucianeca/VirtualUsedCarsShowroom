@@ -1,4 +1,4 @@
-namespace VirtualUsedCarsShowroom.Models
+namespace OnlineUsedCarsShowroom.Models
 {
     public class ErrorViewModel
     {

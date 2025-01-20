@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace VirtualUsedCarsShowroom.Components
+namespace OnlineUsedCarsShowroom.Components
 {
     public class MainMenuComponent : ViewComponent
     {

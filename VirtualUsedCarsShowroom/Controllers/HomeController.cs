@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CarsShowroom.Core.Models.Home;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using VirtualUsedCarsShowroom.Models;
 
@@ -15,12 +16,9 @@ namespace VirtualUsedCarsShowroom.Controllers
 
         public IActionResult Index()
         {
-            return View();
-        }
+            var model=new IndexViewModel(); 
 
-        public IActionResult Privacy()
-        {
-            return View();
+            return View(model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
